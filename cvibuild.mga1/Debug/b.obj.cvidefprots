@@ -16,45 +16,45 @@ SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:339:1"
 [refresh]
 Class="Function"
 Prototype="int refresh(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:514:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:523:1"
 
 [activare_PID]
 Class="Function"
 Prototype="int activare_PID(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:534:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:543:1"
 
 [activare_modif_PID]
 Class="Function"
 Prototype="void activare_modif_PID(int menuBar, int menuItem, void *callbackData, int panel);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:570:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:579:1"
 
 [QuitCallback]
 Class="Function"
 Prototype="int QuitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:579:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:588:1"
 
 [activare_Compensare]
 Class="Function"
 Prototype="int activare_Compensare(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:591:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:600:1"
 
 [activare_Compensare2]
 Class="Function"
 Prototype="int activare_Compensare2(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:603:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:612:1"
 
 [activare_Perturbatie]
 Class="Function"
 Prototype="int activare_Perturbatie(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:615:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:624:1"
 
 [activare_Perturbatie_2]
 Class="Function"
 Prototype="int activare_Perturbatie_2(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:627:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:636:1"
 
 [activare_simulare_RT]
 Class="Function"
 Prototype="int activare_simulare_RT(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:639:1"
+SourceLocation="c:\Users\Emil\Documents\Task1-CPI\b.c:648:1"
 

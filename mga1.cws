@@ -17,7 +17,7 @@ Window Top = 57
 Window Left = 1
 Window Bottom = 1079
 Window Right = 959
-Maximized = True
+Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
 Track Include File Dependencies = True
@@ -30,7 +30,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 0
+Number of Opened Files = 2
 Window Confinement Region Enabled = True
 MainColumnWidth = 129
 FileDateColumnWidth = 70
@@ -48,22 +48,34 @@ Batch Build Debug = False
 [File 0001]
 Path = "/c/Users/Emil/Documents/Task1-CPI/b.c"
 File Type = "CSource"
-Disk Date = 3661695779
+Disk Date = 3661699238
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Source Window State = "1,461,461,461,44,44,44,0,0,0,0,0,0,0,0,0,448,0,461,44,401,784,1,0,"
+Window Top = 29
+Window Left = 6
+Window Z-Order = 1
 
 [File 0002]
 Path = "/c/Users/Emil/Documents/Task1-CPI/b.h"
 File Type = "Include"
-Disk Date = 3660400157
+Disk Date = 3661698896
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0003]
 Path = "/c/Users/Emil/Documents/Task1-CPI/b.uir"
 File Type = "User Interface Resource"
-Disk Date = 3660400157
+Disk Date = 3661698896
 In Projects = "1,"
+Window Top = 56
+Window Left = 20
+Window Height = 401
+Window Width = 784
+Window Z-Order = 2
+
+[Tab Order]
+Tab 0001 = "/c/Users/Emil/Documents/Task1-CPI/b.c"
+Tab 0002 = "/c/Users/Emil/Documents/Task1-CPI/b.uir"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

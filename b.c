@@ -43,7 +43,7 @@ double Tcomp5_1,Tcomp5_2,Ccomp5_1,Ccomp5_2;
 
 
 //Compensator 2
-double yCl_1,yCl,yC1l_1,yC1l,yC2l_1,yC2kl, yC3l_1,yC3l,yC4l_1,yC4l,yC5l_1,yC5l;
+double yCl_1,yCl,yC1l_1,yC1l,yC2l_1,yC2l, yC3l_1,yC3l,yC4l_1,yC4l,yC5l_1,yC5l;
 
 double Tcomp1_1,Tcomp1_2,Ccomp1_1,Ccomp1_2;
 double Tcomp2_1,Tcomp2_2,Ccomp2_1,Ccomp2_2; 
@@ -383,8 +383,17 @@ int CVICALLBACK esantionare (int panel, int control, int event,
 			if(!activare_compensare)
 					yCk=0;
 			
+			yC1l=yC1l_1+Ccomp1_1*(yTRPj-yC1l_1)+Ccomp1_2*(yTRPj-yTRPj_1);   //[-10..10]'C 
+			yC2l=yC2l_1+Ccomp2_1*(yC1l-yC2l_1)+Ccomp2_2*(yC1l-yC1l_1); 		//[-10..10]'C 
+			yC3l=yC3l_1+Ccomp3_1*(yC2l-yC3l_1)+Ccomp3_2*(yC2l-yC2l_1);		//[-10..10]'C 
+			yC4l=yC4l_1+Ccomp4_1*(yC3l-yC4l_1)+Ccomp4_2*(yC3l-yC3l_1);		//[-10..10]'C 
+			yC5l=yC5l_1+Ccomp5_1*(yC4l-yC5l_1)+Ccomp5_2*(yC4l-yC4l_1);
+			yCl = yC5l;
+			if(!activare_compensare2)
+					yCl = 0;
+			
 //############# Intrare EE--Decizie ############################
-			yCOMk=yRk+yCk; //[-10..110]%c (cursa unui robinet) 
+			yCOMk=yRk+yCk+yCl; //[-10..110]%c (cursa unui robinet) 
 				
 //############# Iesire Element de Executie #######################
 			yEEk=yEEk_1+Cee1*(yCOMk-yEEk_1)+Cee2*(yCOMk-yCOMk_1);  //[-10..110]%c    
@@ -450,7 +459,7 @@ else
 PlotLine (panelHandle, PANEL_GRAPH, tk_1, refk_1, tk, refk, VAL_GREEN);//T_Referinta   	[0..100]'C  
 PlotLine (panelHandle, PANEL_GRAPH, tk_1, yTRk_1, tk, yTRk, VAL_RED);  //T_Interior	 	[0..100]'C 
 PlotLine (panelHandle, PANEL_GRAPH, tk_1, Tafarak_1, tk, Tafarak, VAL_BLUE);//T_afara  [0..100]'C  
-PlotLine (panelHandle, PANEL_GRAPH, tk_1, Pert2_1, tk, Pert2, VAL_YELLOW);				
+PlotLine (panelHandle, PANEL_GRAPH, tk_1, Pert2_1, tk, Pert2, VAL_MAGENTA);				
 //Plotare Comanda
 PlotLine (panelHandle, PANEL_CMD, tk_1, yEEk_1, tk, yEEk, VAL_BLUE); //Com Cursa robinet [0..100]%c 
 PlotLine (panelHandle, PANEL_CMD, tk_1, yCOMk_1, tk, yCOMk, VAL_RED);//Com Cursa robinet calculata [-10..110]%c  
@@ -606,7 +615,7 @@ int CVICALLBACK activare_Compensare2 (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			GetCtrlVal (panelHandle, PANEL_ACT_COMPENSARE, &activare_compensare2);
+			GetCtrlVal (panelHandle, PANEL_ACT_COMPENSARE_2, &activare_compensare2);
 			break;
 	}
 	return 0;

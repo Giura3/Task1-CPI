@@ -23,7 +23,7 @@
 #define  PANEL_TIMER                      8       /* control type: timer, callback function: esantionare */
 #define  PANEL_PERTURBATIE_2              9       /* control type: scale, callback function: (none) */
 #define  PANEL_ACT_PERTURBATIE_2          10      /* control type: textButton, callback function: activare_Perturbatie_2 */
-#define  PANEL_ACT_COMPENSARE_2           11      /* control type: textButton, callback function: activare_Compensare */
+#define  PANEL_ACT_COMPENSARE_2           11      /* control type: textButton, callback function: activare_Compensare2 */
 #define  PANEL_TEMPERATURA_AFARA          12      /* control type: scale, callback function: (none) */
 #define  PANEL_ACT_PERTURBATIE            13      /* control type: textButton, callback function: activare_Perturbatie */
 #define  PANEL_ACT_COMPENSARE             14      /* control type: textButton, callback function: activare_Compensare */
@@ -55,6 +55,7 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK activare_Compensare(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK activare_Compensare2(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 void CVICALLBACK activare_modif_PID(int menubar, int menuItem, void *callbackData, int panel);
 int  CVICALLBACK activare_Perturbatie(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK activare_Perturbatie_2(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
