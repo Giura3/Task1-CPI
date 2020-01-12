@@ -22,19 +22,36 @@ double refk_1,refk;
 double epsk_2,epsk_1,epsk;
 //Perturb
 double Tafarak_1,Tafarak;
+double Pert2_1, Pert2;
+
 double pertk_1,pertk;
+double pertj_1, pertj;
 //PID
 double yRk_2,yRk_1,yRk;
 double Kr,Ti,Td,alpha;
 	double p0,p1,p2,q0,q1,q2;
 	double a1,a2,b0,b1,b2; 
-//Compensator
+	
+//Compensator 1
 double yCk_1,yCk,yC1k_1,yC1k,yC2k_1,yC2k, yC3k_1,yC3k,yC4k_1,yC4k,yC5k_1,yC5k;
+
 double Tcomp1_1,Tcomp1_2,Ccomp1_1,Ccomp1_2;
 double Tcomp2_1,Tcomp2_2,Ccomp2_1,Ccomp2_2; 
 double Tcomp3_1,Tcomp3_2,Ccomp3_1,Ccomp3_2; 
 double Tcomp4_1,Tcomp4_2,Ccomp4_1,Ccomp4_2; 
 double Tcomp5_1,Tcomp5_2,Ccomp5_1,Ccomp5_2; 
+
+
+//Compensator 2
+double yCl_1,yCl,yC1l_1,yC1l,yC2l_1,yC2kl, yC3l_1,yC3l,yC4l_1,yC4l,yC5l_1,yC5l;
+
+double Tcomp1_1,Tcomp1_2,Ccomp1_1,Ccomp1_2;
+double Tcomp2_1,Tcomp2_2,Ccomp2_1,Ccomp2_2; 
+double Tcomp3_1,Tcomp3_2,Ccomp3_1,Ccomp3_2; 
+double Tcomp4_1,Tcomp4_2,Ccomp4_1,Ccomp4_2; 
+double Tcomp5_1,Tcomp5_2,Ccomp5_1,Ccomp5_2; 
+
+
 //Comanda
 double yCOMk_1,yCOMk; 
 //EE
@@ -46,10 +63,18 @@ double TEE1,TEE2;
 double yITk_1,yITk,yIT1k_1,yIT1k,yIT2k_1,yIT2k,yIT3k_1,yIT3k;
 double Cit1,Cit2,Cit3;
 double Tit1,Tit2,Tit3;
-//ITP
+
+//ITP1
 double yITPk_1,yITPk,yITP1k_1,yITP1k,yITP2k_1,yITP2k,yITP3k_1,yITP3k,yITP4k_1,yITP4k;
 double Citp1,Citp2,Citp3,Citp4;
 double Titp1,Titp2,Titp3,Titp4;
+
+//ITP2
+double yITPk2_1,yITPk2,yITP1k2_1,yITP1k2,yITP2k2_1,yITP2k2,yITP3k2_1,yITP3k2,yITP4k2_1,yITP4k2;
+double Citp1_2,Citp2_2,Citp3_2,Citp4_2;
+double Titp1_2,Titp2_2,Titp3_2,Titp4_2;
+
+
 //Proces
 double yPROCESk_1,yPROCESk;
 //Traductor Proces
@@ -60,10 +85,19 @@ double Ttr1,Ttr2;
 double yTRPk_1,yTRPk,yTRP1k_1,yTRP1k;
 double CtrP1;
 double TtrP1;
+
+//Traductor Perturbatie P2
+double yTRPj_1,yTRPj,yTRP1j_1,yTRP1j;
+double CtrP2;
+double TtrP2;
+
 //activare compensare
 int activare_compensare;
+int activare_compensare2;
 //activare perturbatie
 int activare_perturbatie;
+
+int activare_perturbatie_2;
 //activare Mod de lucru Simulare sau Real Time
 int activare_simulare;
 //placa cu AO-uri
@@ -115,7 +149,9 @@ int CVICALLBACK OkCallback (int panel, int control, int event,
 						pertk_1=0;
 						Tafarak_1=0;
 						activare_compensare=0;
+						activare_compensare2=0;
 						activare_perturbatie=0;
+						activare_perturbatie_2=0;
 						activare_simulare=0;
 //Setare Moment de timp la pornire pentru afisare grafica 				
 				tk_1=0; 
@@ -178,6 +214,8 @@ int CVICALLBACK OkCallback (int panel, int control, int event,
 				yIT3k_1=refk_1;
 						//Iesire instalatie care NU este AFECTA de Perturbatie
 						yITk_1=yIT3k_1;
+						
+						
 //Initializare ITP Instalatia Tehnologica care ESTE AFECTATA de perturbatie
 			//proces AFECTAT 1  f.d.t ord I 
 				Titp1=0.95*Tit1;
@@ -199,12 +237,37 @@ int CVICALLBACK OkCallback (int panel, int control, int event,
 				Citp4=Te/(Te+Titp4);
 				//Initializare esantioane anterioare  
 				yITP4k_1=0;
-						//Iesire instalatie AFECTA de Perturbatie
-						yITPk_1=yITP4k_1;
+				//Iesire instalatie AFECTA de Perturbatie
+				yITPk_1=yITP4k_1;
 			
-//Initializare PROCES esantioane anterioare ale semnalului de iesire IT cumulat
-				yPROCESk_1=yIT3k_1+yITP4k_1;
 
+				//A doua perturbatie
+				Titp1_2=0.95*Tit1;
+				Citp1_2=Te/(Te+Titp1_2);
+
+				yITP1k2_1=0;
+
+				Titp2_2=0.01*Tit1;
+				Citp2_2=Te/(Te+Titp2_2);
+
+				yITP2k_1=0;
+
+				Titp3_2=0.001*Tit1;
+				Citp3_2=Te/(Te+Titp3_2);
+
+				yITP3k_1=0;
+
+				Titp4_2=0.007*Tit1;
+				Citp4_2=Te/(Te+Titp4_2);
+ 
+				yITP4k2_1=0;
+
+				yITPk2_1=yITP4k2_1;
+
+				yPROCESk_1=yIT3k_1+yITP4k_1+yITP4k2_1;
+
+				
+				
 //Initializare Traductorul pentru iesirea procesului
 			//Trad 1  f.d.t ord I 
 				Ttr1=0.001*Tit1;
@@ -287,18 +350,24 @@ int CVICALLBACK esantionare (int panel, int control, int event,
 				
 //########### Traductor ITP ####################################### 
 			//citire semnal Perturbati
-			   	GetCtrlVal (panelHandle, PANEL_TEMPERATURA_AFARA, &Tafarak); //[0..100]'C 
+			   	GetCtrlVal (panelHandle, PANEL_TEMPERATURA_AFARA, &Tafarak);
+				GetCtrlVal (panelHandle, PANEL_PERTURBATIE_2, &Pert2);//[0..100]'C 
 			//Formatare semnal perturbatie
-				pertk=yTRk_1-Tafarak;	//[-10..10]'C 
+				pertk=yTRk_1-Tafarak;
+				pertj=yTRk_1-Pert2;//[-10..10]'C 
 				if(pertk>20)
 			 		pertk=20;  //[-10..10]%c
 				if(pertk<-20)
 					pertk=-20; 
-				//Traductor IT-Perturbatie
+				//Traductor IT-Perturbatie 1
 				yTRP1k=yTRP1k_1+CtrP1*(pertk-yTRP1k_1);  //[-10..10]'C
 					//Iesire Traductor ITP Proces-Perturbatie
 					yTRPk=yTRP1k;  //[-10..10]'C 
-					
+				
+				//Traductor IT-Perturbatie 2
+				yTRP1j=yTRP1j_1+CtrP1*(pertj-yTRP1j_1);  //[-10..10]'C
+					//Iesire Traductor ITP Proces-Perturbatie
+					yTRPj=yTRP1j;  //[-10..10]'C 
 //############# Iesire/Decizie PID ###############################
 				yRk=-a1*yRk_1-a2*yRk_2+b0*epsk+b1*epsk_1+b2*epsk_2;  //[-100..100]'C  
 				
@@ -361,8 +430,16 @@ else
 			yITP4k=yITP4k_1+Citp4*(yITP3k-yITP4k_1);	//[-10..10]'C 
 			if(!activare_perturbatie)
 					yITP4k=0;
+			
+			yITP1k2=yITP1k2_1+Citp1_2*(pertj-yITP1k2_1);	   	//[-10..10]'C
+			yITP2k2=yITP2k2_1+Citp2*(yITP1k2-yITP2k2_1);   	//[-10..10]'C 
+			yITP3k2=yITP3k2_1+Citp3*(yITP2k2-yITP3k2_1);	//[-10..10]'C 
+			yITP4k2=yITP4k2_1+Citp4*(yITP3k2-yITP4k2_1);	//[-10..10]'C 
+			if(!activare_perturbatie_2)
+					yITP4k2=0;
+			
 //Iesire cumulata Proces 	
-				yPROCESk=yIT3k-yITP4k;   //[-10..110]'C 
+				yPROCESk=yIT3k-yITP4k-yITP4k2;   //[-10..110]'C 
 //########### Traductor IT ######################################### 
 		//Traductor IT
 			yTR1k=yTR1k_1+Ctr1*(yPROCESk-yTR1k_1);
@@ -373,7 +450,7 @@ else
 PlotLine (panelHandle, PANEL_GRAPH, tk_1, refk_1, tk, refk, VAL_GREEN);//T_Referinta   	[0..100]'C  
 PlotLine (panelHandle, PANEL_GRAPH, tk_1, yTRk_1, tk, yTRk, VAL_RED);  //T_Interior	 	[0..100]'C 
 PlotLine (panelHandle, PANEL_GRAPH, tk_1, Tafarak_1, tk, Tafarak, VAL_BLUE);//T_afara  [0..100]'C  
-				
+PlotLine (panelHandle, PANEL_GRAPH, tk_1, Pert2_1, tk, Pert2, VAL_YELLOW);				
 //Plotare Comanda
 PlotLine (panelHandle, PANEL_CMD, tk_1, yEEk_1, tk, yEEk, VAL_BLUE); //Com Cursa robinet [0..100]%c 
 PlotLine (panelHandle, PANEL_CMD, tk_1, yCOMk_1, tk, yCOMk, VAL_RED);//Com Cursa robinet calculata [-10..110]%c  
@@ -393,6 +470,7 @@ epsk_2=epsk_1;
 //Perturb
 pertk_1=pertk;
 Tafarak_1=Tafarak;
+Pert2_1 = Pert2;
 //PID
 yRk_2=yRk_1;
 	yRk_1=yRk;
@@ -522,6 +600,18 @@ int CVICALLBACK activare_Compensare (int panel, int control, int event,
 	return 0;
 }
 
+int CVICALLBACK activare_Compensare2 (int panel, int control, int event,
+									 void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			GetCtrlVal (panelHandle, PANEL_ACT_COMPENSARE, &activare_compensare2);
+			break;
+	}
+	return 0;
+}
+
 int CVICALLBACK activare_Perturbatie (int panel, int control, int event,
 									  void *callbackData, int eventData1, int eventData2)
 {
@@ -529,6 +619,18 @@ int CVICALLBACK activare_Perturbatie (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 		   GetCtrlVal (panelHandle, PANEL_ACT_PERTURBATIE, &activare_perturbatie); 
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK activare_Perturbatie_2 (int panel, int control, int event,
+									  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+		   GetCtrlVal (panelHandle, PANEL_ACT_PERTURBATIE_2, &activare_perturbatie_2); 
 			break;
 	}
 	return 0;
