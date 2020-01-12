@@ -1,6 +1,6 @@
 [Workspace Header]
 Version = 1900
-Pathname = "/c/Users/Emil/Documents/Task1-CPI/MGA project.cws"
+Pathname = "/c/Users/Emil/Documents/Task1-CPI/mga1.cws"
 CVI Dir = "/c/program files (x86)/national instruments/cvi2019"
 CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI2019"
@@ -11,8 +11,8 @@ VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
-Project 0001 = "MGA project.prj"
-Drag Bar Left = 214
+Project 0001 = "mga1.prj"
+Drag Bar Left = 146
 Window Top = 57
 Window Left = 1
 Window Bottom = 1079
@@ -32,7 +32,7 @@ Break At First Statement = False
 Sort Type = "File Name"
 Number of Opened Files = 0
 Window Confinement Region Enabled = True
-MainColumnWidth = 197
+MainColumnWidth = 129
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -46,23 +46,23 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
-Path = "/c/Users/Emil/Desktop/gabi/Test_Labrator_CPI/b.c"
+Path = "/c/Users/Emil/Documents/Task1-CPI/b.c"
 File Type = "CSource"
-Disk Date = 3592914260
+Disk Date = 3661695779
 In Projects = "1,"
-Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,400,600,0,0,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0002]
-Path = "/c/Users/Emil/Desktop/gabi/Test_Labrator_CPI/b.h"
+Path = "/c/Users/Emil/Documents/Task1-CPI/b.h"
 File Type = "Include"
-Disk Date = 3592914150
+Disk Date = 3660400157
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0003]
-Path = "/c/Users/Emil/Desktop/gabi/Test_Labrator_CPI/b.uir"
+Path = "/c/Users/Emil/Documents/Task1-CPI/b.uir"
 File Type = "User Interface Resource"
-Disk Date = 3592914150
+Disk Date = 3660400157
 In Projects = "1,"
 
 [Default Build Config 0001 Debug]
